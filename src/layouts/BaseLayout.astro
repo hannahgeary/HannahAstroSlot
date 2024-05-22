@@ -7,6 +7,8 @@ import Main from "../Componets/Main.astro";
 
 import Footer from "../Componets/Footer.astro";
 
+import { ViewTransitions } from "astro:transitions";
+
 let {title} = Astro.props;
 ---
 
@@ -17,11 +19,14 @@ let {title} = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<ViewTransitions />
+
 	</head>
 	<body>
 		<div id="container">
 			
-			<Header/>
+			<Header header ={title} />
 
 			<Main>
 

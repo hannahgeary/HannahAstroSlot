@@ -2,10 +2,91 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 let title = "Home";
+
+const links = ["Home", "About", "Gallery", "Contact"];
+
+// Create object variable
+
+const navData = [
+{
+href: "/",
+text: "Home",
+divider: "|",
+},
+
+{
+href: "/about",
+text: "About",
+divider: "|",
+},
+{
+href: "/gallery",
+text: "Gallery",
+divider: "|",
+},
+{
+href: "/markdown/",
+text: "Markdown",
+divider: "",
+},
+];
 ---
+
 
 <BaseLayout title = {title}> 
 
 <p>Home - Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque praesentium eos quasi dignissimos est, modi nisi architecto. Ducimus saepe iste et ut quod numquam porro, officiis, laudantium praesentium tempora magni.</p>
 
+<a href="/">Home</a> | <a href="/about/">About</a> | <a href="/gallery/"
+>Gallery</a
+>
+</nav> --><!-- <nav>
+<ul>
+{links.map((link) => <li> {link} </li>)}
+</ul>
+</nav> -->
+<nav>
+<ul>
+{
+navData.map((item) => (
+<>
+<li>
+<a href={item.href}>{item.text}</a>
+</li>
+<span class="divider"> {item.divider} </span>
+</>
+))
+}
+</ul>
+</nav>
+
 </BaseLayout>
+<style>
+    /* Mobile First */
+    /* Manuel Chagoyan */
+    ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    background-color: white;
+    }
+    li {
+    background-color: none;
+    padding: 0 0.5rem;
+    }
+    span.divider {
+    display: none;
+    }
+    
+    /* Tablet to Desktop */
+    @media screen and (min-width: 600px) {
+    ul {
+    flex-direction: row;
+    }
+    span.divider {
+    display: inline;
+    }
+    }
+    </style>
